@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diario de Estudio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Diario de Estudio</h1>
+    </header>
+
+    <section class="streak-card">
+      <div class="streak-value" id="streakValue" aria-live="polite">0</div>
+      <div class="streak-label">días seguidos <span class="fire" aria-hidden="true">🔥</span></div>
+    </section>
+
+    <section class="best-streak-card">
+      <div class="best-streak-value" id="bestStreakValue" aria-live="polite">0</div>
+      <div class="best-streak-label">mejor racha <span class="trophy" aria-hidden="true">🏆</span></div>
+    </section>
+
+    <section class="weekly-card">
+      <div class="weekly-value" id="weeklyValue" aria-live="polite">0</div>
+      <div class="weekly-label">minutos esta semana</div>
+    </section>
+
+    <section class="goal-card">
+      <h2>Objetivo semanal</h2>
+
+      <p class="goal-status" id="goalStatus" aria-live="polite">Objetivo semanal: sin fijar</p>
+
+      <form id="goalForm" class="goal-form" hidden>
+        <div class="form-group">
+          <label for="goalValue">Minutos por semana</label>
+          <input type="text" id="goalValue" name="goalValue" placeholder="Ej: 600…" required autocomplete="off" inputmode="numeric" aria-describedby="goalError">
+        </div>
+        <p class="goal-error" id="goalError" role="alert" hidden></p>
+        <button type="submit" class="btn-primary">Fijar objetivo</button>
+      </form>
+
+      <div class="goal-bar" id="goalBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="" hidden>
+        <div class="goal-bar-fill" id="goalBarFill"></div>
+      </div>
+
+      <p class="goal-progress" id="goalProgress" hidden></p>
+      <p class="goal-remaining" id="goalRemaining" hidden></p>
+      <p class="goal-met" id="goalMet" hidden></p>
+
+      <p class="goal-warning" id="goalWarning" role="status" hidden></p>
+
+      <h3 class="goal-history-title">Semanas anteriores</h3>
+      <ul class="goal-history-list" id="goalHistoryList" hidden></ul>
+    </section>
+
+    <section class="monthly-card">
+      <div class="monthly-value" id="monthlyValue" aria-live="polite">0</div>
+      <div class="monthly-label">días este mes</div>
+    </section>
+
+    <section class="form-section">
+      <h2>Nueva sesión</h2>
+      <form id="sessionForm">
+        <div class="form-group">
+          <label for="date">Fecha</label>
+          <input type="date" id="date" name="date" required autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="topic">Tema</label>
+          <input type="text" id="topic" name="topic" placeholder="Ej: JavaScript, React, Algoritmos…" required autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="minutes">Minutos</label>
+          <input type="number" id="minutes" name="minutes" min="1" placeholder="Ej: 45…" required autocomplete="off" inputmode="numeric">
+        </div>
+        <button type="submit" class="btn-primary">Guardar sesión</button>
+      </form>
+    </section>
+
+    <section class="heatmap-section">
+      <h2>Actividad reciente</h2>
+
+      <div class="heatmap" id="heatmap"
+           role="grid"
+           aria-label="Días estudiados en las últimas 26 semanas"
+           aria-rowcount="7"
+           aria-colcount="27"></div>
+
+      <p class="heatmap-detail" id="heatmapDetail" aria-hidden="true"></p>
+
+      <p class="heatmap-warning" id="heatmapWarning" role="status" hidden></p>
+
+      <div class="heatmap-legend" aria-hidden="true">
+        <span class="heatmap-legend-text">menos</span>
+        <span class="heatmap-legend-swatch" data-level="0"></span>
+        <span class="heatmap-legend-swatch" data-level="1"></span>
+        <span class="heatmap-legend-swatch" data-level="2"></span>
+        <span class="heatmap-legend-swatch" data-level="3"></span>
+        <span class="heatmap-legend-swatch" data-level="4"></span>
+        <span class="heatmap-legend-swatch" data-level="5"></span>
+        <span class="heatmap-legend-text">más</span>
+      </div>
+    </section>
+
+    <section class="sessions-section">
+      <h2>Historial</h2>
+      <ul id="sessionsList" class="sessions-list"></ul>
+      <p id="emptyMessage" class="empty-message" hidden>No hay sesiones registradas aún.</p>
+    </section>
+  </main>
+
+  <script src="diary.js"></script>
+  <script src="heatmap.js"></script>
+  <script src="goal.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

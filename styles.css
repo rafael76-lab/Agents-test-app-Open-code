@@ -1,0 +1,650 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f5f5f4;
+  --card: #ffffff;
+  --text: #1c1917;
+  --text-muted: #78716c;
+  --primary: #166534;
+  --primary-hover: #15803d;
+  --border: #e7e5e4;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --radius: 12px;
+  --radius-sm: 8px;
+  color-scheme: dark light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1917;
+    --card: #292524;
+    --text: #fafaf9;
+    --text-muted: #a8a29e;
+    --primary: #4ade80;
+    --primary-hover: #22c55e;
+    --border: #44403c;
+  }
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text);
+  text-wrap: balance;
+}
+
+.streak-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.streak-value {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.streak-label {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.fire {
+  font-size: 1.25rem;
+}
+
+.best-streak-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.best-streak-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.best-streak-label {
+  font-size: 1rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.trophy {
+  font-size: 1rem;
+}
+
+.weekly-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.weekly-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.weekly-label {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.monthly-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.monthly-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.monthly-label {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.form-section,
+.sessions-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.form-section h2,
+.sessions-section h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(22, 101, 52, 0.15);
+}
+
+.form-group input::placeholder {
+  color: var(--text-muted);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(22, 101, 52, 0.4), 0 0 0 1px var(--primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary:active {
+    transform: none;
+  }
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ------------------------------------------------ Mapa de calor */
+
+:root {
+  --level-0: #e7e5e4;
+  --level-1: #bbf7d0;
+  --level-2: #4ade80;
+  --level-3: #16a34a;
+  --level-4: #15803d;
+  --level-5: #14532d;
+  --heatmap-gap: 3px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --level-0: #292524;
+    --level-1: #14532d;
+    --level-2: #166534;
+    --level-3: #15803d;
+    --level-4: #22c55e;
+    --level-5: #bbf7d0;
+  }
+}
+
+.heatmap-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.heatmap-section h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.heatmap {
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  gap: var(--heatmap-gap);
+}
+
+.heatmap-row {
+  display: grid;
+  grid-template-columns: repeat(27, 1fr);
+  gap: var(--heatmap-gap);
+}
+
+.heatmap-cell {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.heatmap-cell[data-level="0"] { background: var(--level-0); }
+.heatmap-cell[data-level="1"] { background: var(--level-1); }
+.heatmap-cell[data-level="2"] { background: var(--level-2); }
+.heatmap-cell[data-level="3"] { background: var(--level-3); }
+.heatmap-cell[data-level="4"] { background: var(--level-4); }
+.heatmap-cell[data-level="5"] { background: var(--level-5); }
+
+.heatmap-cell:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 1px;
+}
+
+.heatmap-detail {
+  min-height: 1.25rem;
+  margin-top: 12px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.heatmap-warning {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--level-1);
+  color: var(--text);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .heatmap-warning {
+    background: var(--level-4);
+  }
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.heatmap-legend-text {
+  margin: 0 4px;
+}
+
+.heatmap-legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.heatmap-legend-swatch[data-level="0"] { background: var(--level-0); }
+.heatmap-legend-swatch[data-level="1"] { background: var(--level-1); }
+.heatmap-legend-swatch[data-level="2"] { background: var(--level-2); }
+.heatmap-legend-swatch[data-level="3"] { background: var(--level-3); }
+.heatmap-legend-swatch[data-level="4"] { background: var(--level-4); }
+.heatmap-legend-swatch[data-level="5"] { background: var(--level-5); }
+
+/*
+ * Con escala de grises o alto contraste del sistema, el color de relleno deja de
+ * distinguir los niveles, así que cada uno recibe un estilo de borde propio.
+ */
+@media (forced-colors: active) {
+  .heatmap-cell,
+  .heatmap-legend-swatch {
+    border: 1px solid CanvasText;
+  }
+
+  .heatmap-cell[data-level="1"] { border-style: solid; border-width: 1px; }
+  .heatmap-cell[data-level="2"] { border-style: dashed; }
+  .heatmap-cell[data-level="3"] { border-style: dotted; border-width: 2px; }
+  .heatmap-cell[data-level="4"] { border-style: double; border-width: 3px; }
+  .heatmap-cell[data-level="5"] { border-style: solid; border-width: 3px; }
+  .heatmap-cell[data-level="0"] { border-color: GrayText; }
+}
+
+.sessions-list {
+  list-style: none;
+}
+
+.session-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.session-item:last-child {
+  border-bottom: none;
+}
+
+.session-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.session-topic {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.session-meta {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.session-minutes {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+.session-invalid-flag {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 1px 6px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 0.6875rem;
+}
+
+.session-item.is-invalid .session-topic {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.empty-message {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 24px 0;
+  font-size: 0.9375rem;
+}
+
+/* ------------------------------------------------ Objetivo semanal */
+
+.goal-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.goal-card h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.goal-status {
+  font-size: 0.9375rem;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.goal-form {
+  margin-bottom: 16px;
+}
+
+/*
+ * La barra es una pista vacía con un relleno al que F3 le pone el ancho en
+ * porcentaje. El ancho es lo que transmite el progreso, no el color, así que la
+ * barra sigue siendo legible con escala de grises y en alto contraste: lo que se ve
+ * es cuánto del recorrido está cubierto.
+ *
+ * La pista usa `--bg` sobre la tarjeta `--card` y lleva su propio borde, para que se
+ * distinga el recorrido completo del relleno aunque los dos tonos sean cercanos.
+ */
+.goal-bar {
+  height: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+/* `--primary` es el mismo verde de acento que usan las métricas. */
+.goal-bar-fill {
+  height: 100%;
+  width: 0;
+  background: var(--primary);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+/* RF-33: alcanzar la meta no añade aviso, destello ni animación propia. */
+@media (prefers-reduced-motion: reduce) {
+  .goal-bar-fill {
+    transition: none;
+  }
+}
+
+.goal-progress,
+.goal-remaining {
+  font-size: 0.875rem;
+  color: var(--text);
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.goal-met {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * El aviso de meta guardada no válida y el error del formulario comparten forma, y
+ * no el color: los dos son el mismo tratamiento que el aviso del mapa de calor, con
+ * `role="alert"` en el que debe anunciarse de inmediato.
+ */
+.goal-error,
+.goal-warning {
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+.goal-error {
+  margin-bottom: 12px;
+  background: var(--level-1);
+  color: var(--text);
+}
+
+.goal-warning {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  background: var(--level-1);
+  color: var(--text);
+}
+
+/*
+ * Aquí NO se usa `--level-4` en oscuro como hace el aviso del mapa de calor. En
+ * oscuro ese tono es un verde medio (`#22c55e`) y el texto casi blanco, y la
+ * combinación se queda en 2.18:1, por debajo del mínimo AA. RF-9 exige que el
+ * mensaje se lea en los dos modos, así que el aviso del objetivo usa `--level-1`,
+ * que en oscuro es un verde oscuro y sí sostiene el texto claro.
+ */
+@media (prefers-color-scheme: dark) {
+  .goal-error,
+  .goal-warning {
+    background: var(--level-1);
+  }
+}
+
+/*
+ * Con escala de grises o alto contraste, el relleno de la barra puede quedar a tono
+ * con la pista. Se le da un borde propio a la pista y se fuerza el relleno al color
+ * de texto del sistema: la longitud del relleno sigue siendo lo que dice el
+ * progreso, y la pista acentrada muestra dónde acaba.
+ */
+@media (forced-colors: active) {
+  .goal-bar {
+    border: 1px solid CanvasText;
+  }
+
+  .goal-bar-fill {
+    background: Highlight;
+    forced-color-adjust: none;
+  }
+}
+
+/* ------------------------------------------------ Historial del objetivo */
+
+.goal-history-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.goal-history-list {
+  list-style: none;
+}
+
+/*
+ * Mismo tratamiento tipográfico que la lista de sesiones: una fila con su borde
+ * inferior, que es el separador que ya usa `.session-item`.
+ */
+.goal-history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.goal-history-item:last-child {
+  border-bottom: none;
+}
+
+.goal-history-date {
+  min-width: 0;
+}
+
+/* Las cifras van alineadas a la derecha para que se lean en columna. */
+.goal-history-minutes {
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.goal-history-item.is-met .goal-history-minutes {
+  color: var(--primary);
+}
+
+@media (max-width: 480px) {
+  .streak-value {
+    font-size: 3.5rem;
+  }
+
+  .form-section,
+  .sessions-section,
+  .goal-card {
+    padding: 20px 16px;
+  }
+}
